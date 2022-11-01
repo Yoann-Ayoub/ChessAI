@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 public class UCI {
-    static String ENGINENAME="Orion v1";
+    static String ENGINENAME="Chess AI";
     public static void uciCommunication() {
         Scanner input = new Scanner(System.in);
         while (true)
@@ -44,7 +44,7 @@ public class UCI {
     }
     public static void inputUCI() {
         System.out.println("id name "+ENGINENAME);
-        System.out.println("id author Jonathan");
+        System.out.println("id author Yoann");
         //options go here
         System.out.println("uciok");
     }
