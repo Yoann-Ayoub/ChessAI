@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.*;
 /*
  * PIECE=WHITE/black
