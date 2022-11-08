@@ -16,7 +16,7 @@ public class UserInterface extends JPanel {
     static int rating=0;
     static int border=10;//the amount of empty space around the frame
     static double squareSize=64;//the size of a chess board square
-    static JFrame javaF=new JFrame("Orion Chess Engine created by LogicCrazy");//must be declared as static so that other class' can repaint
+    static JFrame javaF=new JFrame("Chess AI created by Yoann");//must be declared as static so that other class' can repaint
     static UserInterface javaUI=new UserInterface();//must be declared as static so that other class' can repaint
     public static void main(String[] args) {
         UCI.uciCommunication();
