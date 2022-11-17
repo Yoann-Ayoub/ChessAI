@@ -9,15 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2a91aec-4e69-465e-acb3-c98e603f00c5" name="Changes" comment="modif">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="modif">
       <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
