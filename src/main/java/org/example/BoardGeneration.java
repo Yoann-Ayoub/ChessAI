@@ -179,6 +179,7 @@ public class BoardGeneration {
     }
     public static void arrayToBitboards(String[][] chessBoard,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK) {
         String Binary;
+        System.out.println("test");
         for (int i=0;i<64;i++) {
             Binary="0000000000000000000000000000000000000000000000000000000000000000";
             Binary=Binary.substring(i+1)+"1"+Binary.substring(0, i);

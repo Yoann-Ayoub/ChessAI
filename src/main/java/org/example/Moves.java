@@ -654,4 +654,85 @@ public class Moves {
 
         }
     }
+
+    public static int boardEvaluation(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+        BoardGeneration.drawArray(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+
+        int score = 0 ;
+        for (int i=0;i<64;i++) {
+            if (((WP>>i)&1)==1) {score+=1;}
+            if (((WN>>i)&1)==1) {score+=3;}
+            if (((WB>>i)&1)==1) {score+=3;}
+            if (((WR>>i)&1)==1) {score+=5;}
+            if (((WQ>>i)&1)==1) {score+=9;}
+            if (((WK>>i)&1)==1) {score+=0;}
+            if (((BP>>i)&1)==1) {score-=1;}
+            if (((BN>>i)&1)==1) {score-=3;}
+            if (((BB>>i)&1)==1) {score-=3;}
+            if (((BR>>i)&1)==1) {score-=5;}
+            if (((BQ>>i)&1)==1) {score-=9;}
+            if (((BK>>i)&1)==1) {score-=0;}
+        }
+
+        System.out.println("score : " + score);
+
+        return score;
+    }
+
+    public static String MinMaxAlgorithm(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+        String moves = Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
+        String moveToDo = "";
+        String chessBoard[][]=new String[8][8];
+        long WP2=WP,WN2=WP,WB2=WB,WR2=WR,WQ2=WQ,WK2=WK,BP2=BP,BN2=BN,BB2=BB,BR2=BR,BQ2=BQ,BK2=BK;
+        long EP2;
+
+        System.out.print("MinMaxAlgo");
+        //get evaluation for each son
+        /*for(int i=0; i<64; i+=4){
+            WP2=WP;WN2=WP;WB2=WB;WR2=WR;WQ2=WQ;WK2=WK;BP2=BP;BN2=BN;BB2=BB;BR2=BR;BQ2=BQ;BK2=BK;
+            String move = moves.substring(i,i+4);
+            UserInterface ui = new UserInterface();
+            String algebraMove = UCI.moveToAlgebra(move);
+            EP2=Moves.makeMoveEP(WP2|BP2,move);
+            WR2=Moves.makeMoveCastle(WR2, WK2|BK2, move, 'R');
+            BR2=Moves.makeMoveCastle(BR2, WK2|BK2, move, 'r');
+            WP2=Moves.makeMove(WP2, move, 'P');
+            WN2=Moves.makeMove(WN2, move, 'N');
+            WB2=Moves.makeMove(WB2, move, 'B');
+            WR2=Moves.makeMove(WR2, move, 'R');
+            WQ2=Moves.makeMove(WQ2, move, 'Q');
+            WK2=Moves.makeMove(WK2, move, 'K');
+            BP2=Moves.makeMove(BP2, move, 'p');
+            BN2=Moves.makeMove(BN2, move, 'n');
+            BB2=Moves.makeMove(BB2, move, 'b');
+            BR2=Moves.makeMove(BR2, move, 'r');
+            BQ2=Moves.makeMove(BQ2, move, 'q');
+            BK2=Moves.makeMove(BK2, move, 'k');
+
+            boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2);
+
+            /*String undoMove = String.valueOf(move.charAt(2) + move.charAt(3) + move.charAt(0) + move.charAt(1));
+            ui.EP=Moves.makeMoveEP(ui.WP|ui.BP,undoMove);
+            ui.WR=Moves.makeMoveCastle(ui.WR, ui.WK|ui.BK, undoMove, 'R');
+            ui.BR=Moves.makeMoveCastle(ui.BR, ui.WK|ui.BK, undoMove, 'r');
+            ui.WP=Moves.makeMove(ui.WP, undoMove, 'P');
+            ui.WN=Moves.makeMove(ui.WN, undoMove, 'N');
+            ui.WB=Moves.makeMove(ui.WB, undoMove, 'B');
+            ui.WR=Moves.makeMove(ui.WR, undoMove, 'R');
+            ui.WQ=Moves.makeMove(ui.WQ, undoMove, 'Q');
+            ui.WK=Moves.makeMove(ui.WK, undoMove, 'K');
+            ui.BP=Moves.makeMove(ui.BP, undoMove, 'p');
+            ui.BN=Moves.makeMove(ui.BN, undoMove, 'n');
+            ui.BB=Moves.makeMove(ui.BB, undoMove, 'b');
+            ui.BR=Moves.makeMove(ui.BR, undoMove, 'r');
+            ui.BQ=Moves.makeMove(ui.BQ, undoMove, 'q');
+            ui.BK=Moves.makeMove(ui.BK, undoMove, 'k');
+            System.out.println("----------------------------------");
+        }
+        //UCI.moveToAlgebra(moveToDo.substring(index,index+4)));*/
+
+        return moveToDo;
+    }
+
+    //public static UserInterface algebraTomo
 }

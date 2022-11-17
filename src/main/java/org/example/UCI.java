@@ -89,7 +89,14 @@ public class UCI {
         } else {
             move=Moves.possibleMovesB(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
         }
+
         int index=(int)(Math.floor(Math.random()*(move.length()/4))*4);
+        System.out.println("index : " + index);
+        System.out.println("move : " + move);
+        System.out.println("move length : " + move.length());
+        System.out.println("move length : " + move.length());
+        Moves.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
+        Moves.MinMaxAlgorithm(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
         System.out.println("bestmove "+moveToAlgebra(move.substring(index,index+4)));
     }
     public static String moveToAlgebra(String move) {
