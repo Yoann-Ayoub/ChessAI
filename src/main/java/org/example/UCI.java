@@ -96,7 +96,7 @@ public class UCI {
         System.out.println("move length : " + move.length());
         System.out.println("move length : " + move.length());
         BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        String bestMove = Moves.MinMaxAlgorithm(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
+        String bestMove = SearchAlgorithm.MinMaxAlgorithm(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
         System.out.println("bestmove "+moveToAlgebra(bestMove));
     }
     public static String moveToAlgebra(String move) {

@@ -9,9 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="création classe BoardEvaluation">
+    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="test modularité evaluation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668808678595</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="test modularité evaluation">
+      <created>1668808928297</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668808928297</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -203,7 +213,8 @@
     <MESSAGE value="generation jar pour arena et test fonctionnel" />
     <MESSAGE value="modif" />
     <MESSAGE value="création classe BoardEvaluation" />
-    <option name="LAST_COMMIT_MESSAGE" value="création classe BoardEvaluation" />
+    <MESSAGE value="test modularité evaluation" />
+    <option name="LAST_COMMIT_MESSAGE" value="test modularité evaluation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChessAI$Main.ic" NAME="Main Coverage Results" MODIFIED="1667489786558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
