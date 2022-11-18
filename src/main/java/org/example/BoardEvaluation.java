@@ -3,6 +3,12 @@ package org.example;
 public class BoardEvaluation {
 
     public static int boardEvaluation(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+        int score = 0;
+        score += evaluatePieces(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        return score;
+    }
+
+    public static int evaluatePieces(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         //BoardGeneration.drawArray(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
 
         int score = 0 ;
@@ -26,5 +32,5 @@ public class BoardEvaluation {
         return score;
     }
 
-    
+
 }
