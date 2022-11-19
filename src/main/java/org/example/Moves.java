@@ -679,24 +679,28 @@ public class Moves {
         return score;
     }
 
-    public static String MinMaxAlgorithm(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+    public static void treeConstruction(int depth, Node root, boolean isMaximizing, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+
+        if(depth == 0){
+            return;
+        }
+
         String moves;
 
         moves = UserInterface.WhiteToMove?
                 Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ)
                 :Moves.possibleMovesB(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
 
-        int bestScore = -1;
-        String bestMove = "";
-        int temporaryScore = -1;
+        int score;
         long WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2, EP2;
 
-        System.out.print("MinMaxAlgo");
+        System.out.print("tree construction");
         //get evaluation for each son
         for(int i=0; i<moves.length(); i+=4){
+
             String move = moves.substring(i,i+4);
-            UserInterface ui = new UserInterface();
-            String algebraMove = UCI.moveToAlgebra(move);
+            score = 0;
+
             EP2=Moves.makeMoveEP(WP|BP,move);
             WR2=Moves.makeMoveCastle(WR, WK|BK, move, 'R');
             BR2=Moves.makeMoveCastle(BR, WK|BK, move, 'r');
@@ -713,19 +717,23 @@ public class Moves {
             BQ2=Moves.makeMove(BQ, move, 'q');
             BK2=Moves.makeMove(BK, move, 'k');
 
-            temporaryScore = boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2);
-            if(temporaryScore>bestScore){
-                bestScore = temporaryScore;
-                bestMove = move;
+            /*if(depth == 1){
+                score = boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2);
             }
 
-            System.out.println("Score : " + bestScore);
-            System.out.println("Best Move : " + UCI.moveToAlgebra(bestMove));
-
+            Node newRoot = new Node(move,score,root,isMaximizing);
+            root.addChild(newRoot);
+            if(isMaximizing){
+                if(score>root.getScore()){
+                    root.setScore(score);
+                }
+            }
+            else{
+                if(score<root.getScore()){
+                    root.setScore(score);
+                }
+            }*/
+            //treeConstruction(depth-1,root,!isMaximizing,WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK);
         }
-
-        return bestMove;
     }
-
-    //public static UserInterface algebraTomo
 }

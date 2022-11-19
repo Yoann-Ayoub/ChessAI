@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="modif">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" afterDir="false" />
