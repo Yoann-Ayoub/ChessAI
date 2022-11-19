@@ -140,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667337861265</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="test">
+      <created>1668892932034</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668892932034</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,13 +199,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <MESSAGE value="test" />
     <MESSAGE value="communication avec arena v1" />
     <MESSAGE value="communication avec arena v2" />
     <MESSAGE value="communication arena avant generation jar" />
     <MESSAGE value="generation jar pour arena et test fonctionnel" />
     <MESSAGE value="modif" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChessAI$Main.ic" NAME="Main Coverage Results" MODIFIED="1667489786558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
