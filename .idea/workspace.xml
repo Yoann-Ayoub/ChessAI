@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="modif">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Node.java" afterDir="false" />
+    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="création class SearchAlgorithm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Moves.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +90,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f2a91aec-4e69-465e-acb3-c98e603f00c5" name="Changes" comment="" />
+      <changelist id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="modif" />
       <created>1667305443543</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -140,14 +138,28 @@
       <option name="project" value="LOCAL" />
       <updated>1667337861265</updated>
     </task>
-    <task id="LOCAL-00007" summary="test">
-      <created>1668892932034</created>
+    <task id="LOCAL-00007" summary="création classe BoardEvaluation">
+      <created>1668808678595</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1668892932034</updated>
+      <updated>1668808678595</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="test modularité evaluation">
+      <created>1668808928297</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668808928297</updated>
+    </task>
+    <task id="LOCAL-00009" summary="création class SearchAlgorithm">
+      <created>1668809802510</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668809802510</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,13 +211,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
+    <MESSAGE value="test" />
     <MESSAGE value="communication avec arena v1" />
     <MESSAGE value="communication avec arena v2" />
     <MESSAGE value="communication arena avant generation jar" />
     <MESSAGE value="generation jar pour arena et test fonctionnel" />
     <MESSAGE value="modif" />
-    <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="création classe BoardEvaluation" />
+    <MESSAGE value="test modularité evaluation" />
+    <MESSAGE value="création class SearchAlgorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="création class SearchAlgorithm" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChessAI$Main.ic" NAME="Main Coverage Results" MODIFIED="1667489786558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

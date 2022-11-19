@@ -95,11 +95,9 @@ public class UCI {
         System.out.println("move : " + move);
         System.out.println("move length : " + move.length());
         System.out.println("move length : " + move.length());
-        Moves.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        //String bestMove = Moves.MinMaxAlgorithm(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        Node root = new Node("Root",-1,null,false);
-        Moves.treeConstruction(1,root,true,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        System.out.println("bestmove "+moveToAlgebra(move.substring(index,index+4)));
+        BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
+        String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
+        System.out.println("bestmove "+moveToAlgebra(bestMove));
     }
     public static String moveToAlgebra(String move) {
         String append="";
