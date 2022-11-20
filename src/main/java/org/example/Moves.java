@@ -1,5 +1,7 @@
 package org.example;
 import java.util.Arrays;
+import java.util.List;
+
 public class Moves {
     static long FILE_A=72340172838076673L;
     static long FILE_H=-9187201950435737472L;
@@ -679,20 +681,20 @@ public class Moves {
         return score;
     }
 
-    public static String treeConstruction(int depth, Node root, boolean isMaximizing, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+    public static void treeConstruction(int depth, Node root, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ){
 
-        String bestmove = "";
         int score;
         long WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2, EP2;
+        boolean CWK2, CWQ2, CBK2, CBQ2;
         String moves;
 
         if(depth == 0){
-            return String.valueOf(BoardEvaluation.boardEvaluation(WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK));
+            return;
         }
 
         moves = UserInterface.WhiteToMove?
-                Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ)
-                :Moves.possibleMovesB(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
+                Moves.possibleMovesW(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ)
+                :Moves.possibleMovesB(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ);
 
         System.out.print("tree construction");
         //get evaluation for each son
@@ -701,9 +703,6 @@ public class Moves {
             String move = moves.substring(i,i+4);
             score = 0;
 
-            EP2=Moves.makeMoveEP(WP|BP,move);
-            WR2=Moves.makeMoveCastle(WR, WK|BK, move, 'R');
-            BR2=Moves.makeMoveCastle(BR, WK|BK, move, 'r');
             WP2=Moves.makeMove(WP, move, 'P');
             WN2=Moves.makeMove(WN, move, 'N');
             WB2=Moves.makeMove(WB, move, 'B');
@@ -716,15 +715,74 @@ public class Moves {
             BR2=Moves.makeMove(BR, move, 'r');
             BQ2=Moves.makeMove(BQ, move, 'q');
             BK2=Moves.makeMove(BK, move, 'k');
+            EP2=Moves.makeMoveEP(WP|BP,move);
+            WR2 = Moves.makeMoveCastle(WR2, WK | BK, move, 'R');
+            BR2 = Moves.makeMoveCastle(BR2, WK | BK, move, 'r');
 
+            CWK2 = CWK;
+            CWQ2 = CWQ;
+            CBK2 = CBK;
+            CBQ2 = CBQ;
 
-            score = Integer.parseInt(treeConstruction(depth-1,root,!isMaximizing,WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK));
+            // check if 'regular' move
+            if (Character.isDigit(moves.charAt(i + 3))) {
+                int start = (Character.getNumericValue(moves.charAt(i)) * 8) + (Character.getNumericValue(moves.charAt(i + 1)));
+                if (((1L << start) & WK) != 0) { CWK2 = false; CWQ2 = false; }
+                else if (((1L << start) & BK) != 0) { CBK2 = false; CBQ2 = false; }
+                else if (((1L << start) & WR & (1L << 63)) != 0) { CWK2=false; }
+                else if (((1L << start) & WR & (1L << 56)) != 0) { CWQ2=false; }
+                else if (((1L << start) & BR & (1L << 7)) != 0) { CBK2=false; }
+                else if (((1L << start) & BR & 1L) != 0) { CBQ2 = false; }
+            }
+
+            Node newNode = new Node(move,boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
+            root.addChild(newNode);
+
+            treeConstruction(depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
+
 
             //alpha beta
 
-            return move;
+            //return move;
         }
 
-        return bestmove;
+        //return bestmove;
+    }
+
+    public static int MinMax(Node node, int depth, boolean isMaximizing){
+        int value;
+        if(depth==0 || node.getChildren() == null){
+            return node.getScore();
+        }
+
+        List<Node> nodeList = node.getChildren();
+
+        if(isMaximizing){
+            value = -10000000;
+            for (Node son:nodeList) {
+                int tempValue = MinMax(son,depth-1,false);
+                if(tempValue>value){
+                    value = tempValue;
+                    node.setSonChoosen(son);
+                    //node.setScore(value);
+                }
+            }
+        }
+
+        else{
+            value = 10000000;
+            for (Node son:nodeList) {
+                int tempValue = MinMax(son,depth-1,true);
+                if(tempValue<value){
+                    value = tempValue;
+                    node.setSonChoosen(son);
+                    //node.setScore(value);
+                }
+            }
+        }
+
+        return value;
+
+
     }
 }

@@ -95,9 +95,19 @@ public class UCI {
         System.out.println("move : " + move);
         System.out.println("move length : " + move.length());
         System.out.println("move length : " + move.length());
-        BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
+        Node root = new Node("",0,null);
+        Moves.treeConstruction(4,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+        System.out.println(root.getChildren().get(1).getValue()+" is the value");
+        System.out.println("-----------------");
+        System.out.println("Value of minmax : " + Moves.MinMax(root,3,true));
+        System.out.println("-----------------");
+        String bestMove = root.getSonChoosen().getValue();
+        System.out.println(root.getSonChoosen().getValue()+" is the value");
+        //BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
+        //String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
+        //root.displayTree();
         System.out.println("bestmove "+moveToAlgebra(bestMove));
+
     }
     public static String moveToAlgebra(String move) {
         String append="";
