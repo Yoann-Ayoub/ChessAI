@@ -83,24 +83,32 @@ public class UCI {
         }
     }
     public static void inputGo() {
-        String move;
+        /*String move;
         if (UserInterface.WhiteToMove) {
             move=Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
         } else {
             move=Moves.possibleMovesB(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
         }
 
+
         //int index=(int)(Math.floor(Math.random()*(move.length()/4))*4);
         //System.out.println("index : " + index);
         System.out.println("move : " + move);
         System.out.println("move length : " + move.length());
+
+        */
+
+
         Node root = new Node("",0,null);
         SearchAlgorithm.treeConstruction(5,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+
         System.out.println(root.getChildren().get(1).getValue()+" is the first value");
         System.out.println("-----------------");
         System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,4,true));
         System.out.println("-----------------");
+
         String bestMove = root.getSonChoosen().getValue();
+
         System.out.println(root.getSonChoosen().getValue()+" is the value");
         //BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
         //String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
