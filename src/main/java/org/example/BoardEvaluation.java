@@ -65,9 +65,12 @@ public class BoardEvaluation {
             {-30,-10, 20, 30, 30, 20,-10,-30},
             {-30,-30,  0,  0,  0,  0,-30,-30},
             {-50,-30,-30,-30,-30,-30,-30,-50}};
+
+
     public static int boardEvaluation(boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         int score = 0;
         score += evaluatePieces(whiteToMove, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        score += evaluatePosition(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
         return score;
     }
 
@@ -92,6 +95,24 @@ public class BoardEvaluation {
 
         //System.out.println("score : " + score);
 
+        return score;
+    }
+
+
+    public static int evaluatePosition(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK) {
+        int score = 0;
+        for (int i=0;i<64;i++){
+            if (((WP>>i)&1)==1) {score = UserInterface.WhiteToMove? score+pawnBoard[i/8][i%8] : score-pawnBoard[i/8][i%8];}
+            if (((WN>>i)&1)==1) {score = UserInterface.WhiteToMove? score+knightBoard[i/8][i%8] : score-knightBoard[i/8][i%8];}
+            if (((WB>>i)&1)==1) {score = UserInterface.WhiteToMove? score+bishopBoard[i/8][i%8] : score-bishopBoard[i/8][i%8];}
+            if (((WR>>i)&1)==1) {score = UserInterface.WhiteToMove? score+rookBoard[i/8][i%8] : score-rookBoard[i/8][i%8];}
+            if (((WQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score+queenBoard[i/8][i%8] : score-queenBoard[i/8][i%8];}
+            if (((BP>>i)&1)==1) {score = UserInterface.WhiteToMove? score-pawnBoard[i/8][i%8] : score+pawnBoard[i/8][i%8];}
+            if (((BN>>i)&1)==1) {score = UserInterface.WhiteToMove? score-knightBoard[i/8][i%8] : score+knightBoard[i/8][i%8];}
+            if (((BB>>i)&1)==1) {score = UserInterface.WhiteToMove? score-bishopBoard[i/8][i%8] : score+bishopBoard[i/8][i%8];}
+            if (((BR>>i)&1)==1) {score = UserInterface.WhiteToMove? score-rookBoard[i/8][i%8] : score+rookBoard[i/8][i%8];}
+            if (((BQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score-queenBoard[i/8][i%8] : score+queenBoard[i/8][i%8];}
+        }
         return score;
     }
 
