@@ -40,7 +40,7 @@ public class SearchAlgorithm {
             BQ2=Moves.makeMove(BQ, move, 'q');
             BK2=Moves.makeMove(BK, move, 'k');
 
-            temporaryScore = BoardEvaluation.boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2);
+            temporaryScore = BoardEvaluation.boardEvaluation(WhiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2);
             if(temporaryScore>bestScore){
                 bestScore = temporaryScore;
                 bestMove = move;
@@ -56,7 +56,7 @@ public class SearchAlgorithm {
 
 
 
-    public static void treeConstruction(int depth, Node root, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ){
+    public static void treeConstruction(boolean whiteToMove, int depth, Node root, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ){
 
         int score;
         long WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2, EP2;
@@ -67,7 +67,7 @@ public class SearchAlgorithm {
             return;
         }
 
-        moves = UserInterface.WhiteToMove?
+        moves = whiteToMove?
                 Moves.possibleMovesW(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ)
                 :Moves.possibleMovesB(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ);
 
@@ -110,15 +110,10 @@ public class SearchAlgorithm {
                 else if (((1L << start) & BR & 1L) != 0) { CBQ2 = false; }
             }
 
-            Node newNode = new Node(move,BoardEvaluation.boardEvaluation(WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
+            Node newNode = new Node(move,BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
             root.addChild(newNode);
 
-            treeConstruction(depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
-
-
-            //alpha beta
-
-            //return move;
+            treeConstruction(!whiteToMove,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
         }
 
         //return bestmove;

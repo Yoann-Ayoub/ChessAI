@@ -65,13 +65,13 @@ public class BoardEvaluation {
             {-30,-10, 20, 30, 30, 20,-10,-30},
             {-30,-30,  0,  0,  0,  0,-30,-30},
             {-50,-30,-30,-30,-30,-30,-30,-50}};
-    public static int boardEvaluation(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+    public static int boardEvaluation(boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         int score = 0;
-        score += evaluatePieces(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        score += evaluatePieces(whiteToMove, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
         return score;
     }
 
-    public static int evaluatePieces(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+    public static int evaluatePieces(boolean whiteToMove, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         //BoardGeneration.drawArray(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
 
         int score = 0 ;
@@ -81,13 +81,13 @@ public class BoardEvaluation {
             if (((WB>>i)&1)==1) {score = UserInterface.WhiteToMove? score+300 : score-300;}
             if (((WR>>i)&1)==1) {score = UserInterface.WhiteToMove? score+500 : score-500;}
             if (((WQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score+900 : score-900;}
-            if (((WK>>i)&1)==1) {}
+            if (((WK>>i)&1)==1) {score = UserInterface.WhiteToMove? score+10000 : score-10000;}
             if (((BP>>i)&1)==1) {score = UserInterface.WhiteToMove? score-100 : score+100;}
             if (((BN>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
             if (((BB>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
             if (((BR>>i)&1)==1) {score = UserInterface.WhiteToMove? score-500 : score+500;}
             if (((BQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score-900 : score+900;}
-            if (((BK>>i)&1)==1) {}
+            if (((BK>>i)&1)==1) {score = UserInterface.WhiteToMove? score-10000 : score+10000;}
         }
 
         //System.out.println("score : " + score);
