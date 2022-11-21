@@ -97,10 +97,39 @@ public class UCI {
         System.out.println("move length : " + move.length());
 
         */
+        /*Node root1 = new Node("",0,null);
+
+        Node node11 = new Node("move1",0,null);
+        Node node12 = new Node("move2",0,null);
+        Node node13 = new Node("move3",0,null);
+
+        root1.addChild(node11);
+        root1.addChild(node12);
+        root1.addChild(node13);
+
+        node11.addChild(new Node("",12,node11));
+        node11.addChild(new Node("",10,node11));
+        node11.addChild(new Node("",3,node11));
+
+        node12.addChild(new Node("",5,node12));
+        node12.addChild(new Node("",8,node12));
+        node12.addChild(new Node("",15,node12));
+
+        node13.addChild(new Node("",11,node13));
+        node13.addChild(new Node("",2,node13));
+        node13.addChild(new Node("",12,node13));
+
+        //SearchAlgorithm.treeConstruction(2,root1,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+        System.out.println("Value of minmax teeeest : " + SearchAlgorithm.MinMax(root1,2,true));
+        System.out.println(root1.getSonChoosen().getValue()+" is the value");
+        */
+
+
+
 
 
         Node root = new Node("",0,null);
-        SearchAlgorithm.treeConstruction(5,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+        SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove,5,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
 
         System.out.println(root.getChildren().get(1).getValue()+" is the first value");
         System.out.println("-----------------");
