@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="reorganisation">
+    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="pour pull">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" afterDir="false" />
     </list>
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669041787046</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="pour pull">
+      <created>1669074719947</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669074719947</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +252,8 @@
     <MESSAGE value="preparation pour recursivite" />
     <MESSAGE value="modification treeConstruction" />
     <MESSAGE value="reorganisation" />
-    <option name="LAST_COMMIT_MESSAGE" value="reorganisation" />
+    <MESSAGE value="pour pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="pour pull" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChessAI$Main.ic" NAME="Main Coverage Results" MODIFIED="1667489786558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
