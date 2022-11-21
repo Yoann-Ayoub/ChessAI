@@ -110,6 +110,8 @@ public class SearchAlgorithm {
                 else if (((1L << start) & BR & 1L) != 0) { CBQ2 = false; }
             }
 
+
+            score = depth==1? BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2) : 0;
             Node newNode = new Node(move,BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
             root.addChild(newNode);
 
@@ -134,6 +136,9 @@ public class SearchAlgorithm {
                 if(tempValue>value){
                     value = tempValue;
                     node.setSonChoosen(son);
+                    /*if(depth==UCI.depth){
+                       node.setSonChoosen(son);
+                    }*/
                     //node.setScore(value);
                 }
             }
@@ -145,8 +150,67 @@ public class SearchAlgorithm {
                 int tempValue = MinMax(son,depth-1,true);
                 if(tempValue<value){
                     value = tempValue;
-                    node.setSonChoosen(son);
+                    /*if(depth==UCI.depth){
+                        node.setSonChoosen(son);
+                    }*/
                     //node.setScore(value);
+                }
+            }
+        }
+
+        return value;
+
+
+    }
+
+
+    public static int AlphaBeta(Node node, int alpha, int beta, int depth, boolean isMaximizing){
+        int value;
+        if(depth==0 || node.getChildren() == null){
+            return node.getScore();
+        }
+
+        List<Node> nodeList = node.getChildren();
+
+        if(isMaximizing){
+            value = -10000000;
+            for (Node son:nodeList) {
+                int tempValue = AlphaBeta(son,alpha,beta ,depth-1,false);
+                if(tempValue>value){
+                    value = tempValue;
+                    node.setSonChoosen(son);
+                    /*if(depth==UCI.depth){
+                       node.setSonChoosen(son);
+                    }*/
+                    //node.setScore(value);
+                }
+
+                if(value>=beta){
+                    return value;
+                }
+                if(alpha<value){
+                    alpha = value;
+                }
+            }
+        }
+
+        else{
+            value = 10000000;
+            for (Node son:nodeList) {
+                int tempValue = AlphaBeta(son,alpha, beta , depth-1,true);
+                if(tempValue<value){
+                    value = tempValue;
+                    node.setSonChoosen(son);
+                    /*if(depth==UCI.depth){
+                        node.setSonChoosen(son);
+                    }*/
+                    //node.setScore(value);
+                }
+                if(alpha>value){
+                    return value;
+                }
+                if(value<beta){
+                    beta = value;
                 }
             }
         }

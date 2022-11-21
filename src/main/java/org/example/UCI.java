@@ -3,6 +3,7 @@ package org.example;
 import java.util.*;
 public class UCI {
     static String ENGINENAME="Chess AI";
+    static int depth = 3;
     public static void uciCommunication() {
         Scanner input = new Scanner(System.in);
         while (true)
@@ -83,6 +84,10 @@ public class UCI {
         }
     }
     public static void inputGo() {
+
+        int alpha = -1000000000;
+        int beta = 1000000000;
+
         /*String move;
         if (UserInterface.WhiteToMove) {
             move=Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
@@ -119,21 +124,25 @@ public class UCI {
         node13.addChild(new Node("",2,node13));
         node13.addChild(new Node("",12,node13));
 
+
+
         //SearchAlgorithm.treeConstruction(2,root1,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
         System.out.println("Value of minmax teeeest : " + SearchAlgorithm.MinMax(root1,2,true));
-        System.out.println(root1.getSonChoosen().getValue()+" is the value");
+        //System.out.println(root1.getSonChoosen().getValue()+" is the value");
+        System.out.println("Value of alpha beta teeeest : " + SearchAlgorithm.AlphaBeta(root1,alpha,beta,2,true));
+
+
         */
 
 
 
-
-
         Node root = new Node("",0,null);
-        SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove,5,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+        SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove,depth+1,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
 
         System.out.println(root.getChildren().get(1).getValue()+" is the first value");
         System.out.println("-----------------");
-        System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,4,true));
+        //System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,depth,true));
+        System.out.println("Value of alphabeta : " + SearchAlgorithm.AlphaBeta(root,alpha,beta,depth,true));
         System.out.println("-----------------");
 
         String bestMove = root.getSonChoosen().getValue();
