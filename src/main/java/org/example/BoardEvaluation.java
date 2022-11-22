@@ -84,13 +84,13 @@ public class BoardEvaluation {
             if (((WB>>i)&1)==1) {score = UserInterface.WhiteToMove? score+300 : score-300;}
             if (((WR>>i)&1)==1) {score = UserInterface.WhiteToMove? score+500 : score-500;}
             if (((WQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score+900 : score-900;}
-            if (((WK>>i)&1)==1) {score = UserInterface.WhiteToMove? score+10000 : score-10000;}
+            if (((WK>>i)&1)==1) {}
             if (((BP>>i)&1)==1) {score = UserInterface.WhiteToMove? score-100 : score+100;}
             if (((BN>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
             if (((BB>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
             if (((BR>>i)&1)==1) {score = UserInterface.WhiteToMove? score-500 : score+500;}
             if (((BQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score-900 : score+900;}
-            if (((BK>>i)&1)==1) {score = UserInterface.WhiteToMove? score-10000 : score+10000;}
+            if (((BK>>i)&1)==1) {}
         }
 
         //System.out.println("score : " + score);

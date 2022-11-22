@@ -110,15 +110,14 @@ public class SearchAlgorithm {
                 else if (((1L << start) & BR & 1L) != 0) { CBQ2 = false; }
             }
 
-
-            score = depth==1? BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2) : 0;
-            Node newNode = new Node(move,BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
-            root.addChild(newNode);
-
-            treeConstruction(!whiteToMove,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
+            Node newNode;
+            if (((WK2 & Moves.unsafeForWhite(WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2)) == 0 && whiteToMove) ||
+                    ((BK2 & Moves.unsafeForBlack(WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2)) == 0 && !whiteToMove)) {
+                newNode = new Node(move,BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
+                root.addChild(newNode);
+                treeConstruction(!whiteToMove,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
+            }
         }
-
-        //return bestmove;
     }
 
     public static int MinMax(Node node, int depth, boolean isMaximizing){
@@ -218,6 +217,33 @@ public class SearchAlgorithm {
         return value;
 
 
+    }
+
+
+    public static int getFirstLegalMove(String moves, long WP, long WN, long WB, long WR, long WQ, long WK, long BP, long BN, long BB, long BR, long BQ, long BK, long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ, boolean WhiteToMove) {
+        //TAKEN FROM GITLHUB STRESS BLABALA
+        // for each move
+        for (int i = 0; i < moves.length(); i += 4) {
+
+            // make the move
+            String substring = moves.substring(i, i + 4);
+            long WPt = Moves.makeMove(WP, substring, 'P'), WNt = Moves.makeMove(WN, substring, 'N'),
+                    WBt = Moves.makeMove(WB, substring, 'B'), WRt = Moves.makeMove(WR, substring, 'R'),
+                    WQt = Moves.makeMove(WQ, substring, 'Q'), WKt = Moves.makeMove(WK, substring, 'K'),
+                    BPt = Moves.makeMove(BP, substring, 'p'), BNt = Moves.makeMove(BN, substring, 'n'),
+                    BBt = Moves.makeMove(BB, substring, 'b'), BRt = Moves.makeMove(BR, substring, 'r'),
+                    BQt = Moves.makeMove(BQ, substring, 'q'), BKt = Moves.makeMove(BK, substring, 'k');
+            WRt = Moves.makeMoveCastle(WRt, WK | BK, substring, 'R');
+            BRt = Moves.makeMoveCastle(BRt, WK | BK, substring, 'r');
+
+            if (((WKt & Moves.unsafeForWhite(WPt, WNt, WBt, WRt, WQt, WKt, BPt, BNt, BBt, BRt, BQt, BKt)) == 0 && WhiteToMove) ||
+                    ((BKt & Moves.unsafeForBlack(WPt, WNt, WBt, WRt, WQt, WKt, BPt, BNt, BBt, BRt, BQt, BKt)) == 0 && !WhiteToMove)) {
+                return i;
+            }
+        }
+
+        // no legal move
+        return -1;
     }
 
 
