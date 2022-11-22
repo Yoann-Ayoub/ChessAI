@@ -83,7 +83,7 @@ public class UCI {
             }
         }
     }
-    public static void inputGo() {
+    public static void inputGo(){
 
         int alpha = -1000000000;
         int beta = 1000000000;
@@ -133,50 +133,29 @@ public class UCI {
 
 
         */
+        long startTime = System.currentTimeMillis();
+        //depth = 2;
+        String bestMove = SearchAlgorithm.Search(startTime);;
+        //while(System.currentTimeMillis() - startTime < 990) {
 
+           // Node root = new Node("", 0, null);
+            //SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove, depth + 1, root, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
 
+            //System.out.println(root.getChildren().get(1).getValue()+" is the first value");
+            //System.out.println("-----------------");
+            //System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,depth,true));
+            //SearchAlgorithm.AlphaBeta(root, alpha, beta, depth, true);
+            //System.out.println("-----------------");
 
-        if (((UserInterface.WK&Moves.unsafeForWhite(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK))==1 && UserInterface.WhiteToMove) ) {
-            System.out.println("-------------aleeeeert---------------");
-            System.out.println("heeeeelp our king is unsafe");
-            System.out.println("--------------sos--------------");
-            System.out.println("-----------------oscour---1--------");
-        }
-        if (((UserInterface.WK&Moves.unsafeForWhite(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK))==0 && UserInterface.WhiteToMove) ) {
-            System.out.println("-------------aleeeeert---------------");
-            System.out.println("heeeeelp our king is unsafe");
-            System.out.println("--------------sos--------------");
-            System.out.println("-----------------oscour----2-------");
-        }
+            //bestMove = root.getSonChoosen().getValue();
+            //depth++;
 
-        if (((UserInterface.BK&Moves.unsafeForBlack(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK))==1 && !UserInterface.WhiteToMove) ) {
-            System.out.println("-------------aleeeeert---------------");
-            System.out.println("heeeeelp our king is unsafe");
-            System.out.println("--------------sos--------------");
-            System.out.println("-----------------oscour----3-------");
-        }
-        if (((UserInterface.BK&Moves.unsafeForBlack(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK))==0 && !UserInterface.WhiteToMove) ) {
-            System.out.println("-------------aleeeeert---------------");
-            System.out.println("heeeeelp our king is unsafe");
-            System.out.println("--------------sos--------------");
-            System.out.println("-----------------oscour------4-----");
-        }
-
-        Node root = new Node("",0,null);
-        SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove,depth+1,root,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
-
-        System.out.println(root.getChildren().get(1).getValue()+" is the first value");
-        System.out.println("-----------------");
-        //System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,depth,true));
-        System.out.println("Value of alphabeta : " + SearchAlgorithm.AlphaBeta(root,alpha,beta,depth,true));
-        System.out.println("-----------------");
-
-        String bestMove = root.getSonChoosen().getValue();
-
-        System.out.println(root.getSonChoosen().getValue()+" is the value");
-        //BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-        //String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
-        //root.displayTree();
+            //System.out.println(root.getSonChoosen().getValue()+" is the value");
+            //BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
+            //String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
+            //root.displayTree();
+        //}
+        //System.out.println(depth);
         System.out.println("bestmove "+moveToAlgebra(bestMove));
 
     }

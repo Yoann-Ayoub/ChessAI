@@ -1,10 +1,70 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchAlgorithm {
 
     static int maxDepth = 4;
+
+    public static  String Search(long startTime) {
+
+        int alpha = -1000000000;
+        int beta = 1000000000;
+        Node root = new Node("", 0, null);
+        List<Node> nextNodeToExplore = new ArrayList<>();
+        //nextNodeToExplore.add(root);
+        int depth=2;
+        /*try {
+            nextNodeToExplore = SearchAlgorithm.treeConstruction(startTime,UserInterface.WhiteToMove, nextNodeToExplore,1, root, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+        } catch (Exception e) {
+
+        }*/
+       /* System.out.println("------------------START--------------------------");
+        System.out.println("----------------------------------");
+        System.out.println("Number of node to explore : " + nextNodeToExplore.size());
+        System.out.println("----------------------------------");
+        System.out.println("----------------------------------");*/
+
+        while(System.currentTimeMillis() - startTime < 990) {
+
+            List<Node> nextNodeToExploreTemp = new ArrayList<>();
+            /*for (Node nodeToExplore: nextNodeToExplore) {
+                if(nodeToExplore!=null){
+                    try {
+                        nextNodeToExploreTemp = SearchAlgorithm.treeConstruction(startTime,UserInterface.WhiteToMove, nextNodeToExploreTemp,1, nodeToExplore, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+                    } catch (Exception e) {
+                        break;
+                    }
+                }
+            }*/
+            try {
+                nextNodeToExploreTemp = SearchAlgorithm.treeConstruction(startTime,UserInterface.WhiteToMove, nextNodeToExploreTemp,depth +1, root, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
+            } catch (Exception e) {
+                System.out.println("TREE CONS EXCEPTION depth :" + depth);
+                return root.getSonChoosen().getValue();
+            }
+
+            nextNodeToExplore = nextNodeToExploreTemp;
+            /*System.out.println("------------------WHILE LOOP--------------------------");
+            System.out.println("----------------------------------");
+            System.out.println("Number of node to explore : " + nextNodeToExplore.size());
+            System.out.println("----------------------------------");
+            System.out.println("----------------------------------");*/
+
+            try {
+                SearchAlgorithm.AlphaBeta(root, alpha, beta, depth, true, startTime);
+            } catch (Exception e) {
+                System.out.println("AB EXCEPTION depth :" + depth);
+                return root.getSonChoosen().getValue();
+            }
+            depth++;
+
+        }
+        System.out.println("depth :" + depth);
+        return root.getSonChoosen().getValue();
+
+    }
 
     public static String MinMaxAlgorithm(int depth, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK, boolean WhiteToMove){
         String moves;
@@ -56,7 +116,7 @@ public class SearchAlgorithm {
 
 
 
-    public static void treeConstruction(boolean whiteToMove, int depth, Node root, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ){
+    public static List<Node> treeConstruction(long startTime, boolean whiteToMove, List<Node> nodeList, int depth, Node root, long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK,long EP, boolean CWK, boolean CWQ, boolean CBK, boolean CBQ) throws Exception {
 
         int score;
         long WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2, EP2;
@@ -64,15 +124,19 @@ public class SearchAlgorithm {
         String moves;
 
         if(depth == 0){
-            return;
+            nodeList.add(root);
+            return nodeList;
         }
 
         moves = whiteToMove?
                 Moves.possibleMovesW(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ)
                 :Moves.possibleMovesB(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ);
 
-        System.out.print("tree construction");
+        //System.out.print("tree construction");
         //get evaluation for each son
+        if(System.currentTimeMillis() - startTime >= 990) {
+            throw new Exception();
+        }
         for(int i=0; i<moves.length(); i+=4){
 
             String move = moves.substring(i,i+4);
@@ -115,9 +179,11 @@ public class SearchAlgorithm {
                     ((BK2 & Moves.unsafeForBlack(WP2, WN2, WB2, WR2, WQ2, WK2, BP2, BN2, BB2, BR2, BQ2, BK2)) == 0 && !whiteToMove)) {
                 newNode = new Node(move,BoardEvaluation.boardEvaluation(whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
                 root.addChild(newNode);
-                treeConstruction(!whiteToMove,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
+                treeConstruction(startTime,!whiteToMove,nodeList,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
             }
         }
+
+        return nodeList;
     }
 
     public static int MinMax(Node node, int depth, boolean isMaximizing){
@@ -163,7 +229,7 @@ public class SearchAlgorithm {
     }
 
 
-    public static int AlphaBeta(Node node, int alpha, int beta, int depth, boolean isMaximizing){
+    public static int AlphaBeta(Node node, int alpha, int beta, int depth, boolean isMaximizing, long startTime) throws Exception {
         int value;
         if(depth==0 || node.getChildren() == null){
             return node.getScore();
@@ -174,7 +240,11 @@ public class SearchAlgorithm {
         if(isMaximizing){
             value = -10000000;
             for (Node son:nodeList) {
-                int tempValue = AlphaBeta(son,alpha,beta ,depth-1,false);
+                if(System.currentTimeMillis() - startTime >= 990) {
+                    throw new Exception();
+
+                }
+                int tempValue = AlphaBeta(son,alpha,beta ,depth-1,false, startTime);
                 if(tempValue>value){
                     value = tempValue;
                     node.setSonChoosen(son);
@@ -196,7 +266,10 @@ public class SearchAlgorithm {
         else{
             value = 10000000;
             for (Node son:nodeList) {
-                int tempValue = AlphaBeta(son,alpha, beta , depth-1,true);
+                if(System.currentTimeMillis() - startTime >= 990) {
+                    throw new Exception();
+                }
+                int tempValue = AlphaBeta(son,alpha, beta , depth-1,true, startTime);
                 if(tempValue<value){
                     value = tempValue;
                     node.setSonChoosen(son);
