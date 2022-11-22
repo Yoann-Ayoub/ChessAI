@@ -12,8 +12,7 @@
     <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="pour pull">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UCI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669074719947</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="pour pull">
+      <created>1669075036856</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1669075036856</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

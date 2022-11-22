@@ -70,7 +70,7 @@ public class BoardEvaluation {
     public static int boardEvaluation(boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         int score = 0;
         score += evaluatePieces(whiteToMove, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
-        score += evaluatePosition(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        score += evaluatePosition(whiteToMove, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
         return score;
     }
 
@@ -79,18 +79,18 @@ public class BoardEvaluation {
 
         int score = 0 ;
         for (int i=0;i<64;i++) {
-            if (((WP>>i)&1)==1) {score = UserInterface.WhiteToMove? score+100 : score-100;}
-            if (((WN>>i)&1)==1) {score = UserInterface.WhiteToMove? score+300 : score-300;}
-            if (((WB>>i)&1)==1) {score = UserInterface.WhiteToMove? score+300 : score-300;}
-            if (((WR>>i)&1)==1) {score = UserInterface.WhiteToMove? score+500 : score-500;}
-            if (((WQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score+900 : score-900;}
-            if (((WK>>i)&1)==1) {score = UserInterface.WhiteToMove? score+10000 : score-10000;}
-            if (((BP>>i)&1)==1) {score = UserInterface.WhiteToMove? score-100 : score+100;}
-            if (((BN>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
-            if (((BB>>i)&1)==1) {score = UserInterface.WhiteToMove? score-300 : score+300;}
-            if (((BR>>i)&1)==1) {score = UserInterface.WhiteToMove? score-500 : score+500;}
-            if (((BQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score-900 : score+900;}
-            if (((BK>>i)&1)==1) {score = UserInterface.WhiteToMove? score-10000 : score+10000;}
+            if (((WP>>i)&1)==1) {score = whiteToMove? score+100 : score-100;}
+            if (((WN>>i)&1)==1) {score = whiteToMove? score+300 : score-300;}
+            if (((WB>>i)&1)==1) {score = whiteToMove? score+300 : score-300;}
+            if (((WR>>i)&1)==1) {score = whiteToMove? score+500 : score-500;}
+            if (((WQ>>i)&1)==1) {score = whiteToMove? score+900 : score-900;}
+            if (((WK>>i)&1)==1) {score = whiteToMove? score+10000 : score-10000;}
+            if (((BP>>i)&1)==1) {score = whiteToMove? score-100 : score+100;}
+            if (((BN>>i)&1)==1) {score = whiteToMove? score-300 : score+300;}
+            if (((BB>>i)&1)==1) {score = whiteToMove? score-300 : score+300;}
+            if (((BR>>i)&1)==1) {score = whiteToMove? score-500 : score+500;}
+            if (((BQ>>i)&1)==1) {score = whiteToMove? score-900 : score+900;}
+            if (((BK>>i)&1)==1) {score = whiteToMove? score-10000 : score+10000;}
         }
 
         //System.out.println("score : " + score);
@@ -99,19 +99,19 @@ public class BoardEvaluation {
     }
 
 
-    public static int evaluatePosition(long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK) {
+    public static int evaluatePosition(boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK) {
         int score = 0;
         for (int i=0;i<64;i++){
-            if (((WP>>i)&1)==1) {score = UserInterface.WhiteToMove? score+pawnBoard[i/8][i%8] : score-pawnBoard[i/8][i%8];}
-            if (((WN>>i)&1)==1) {score = UserInterface.WhiteToMove? score+knightBoard[i/8][i%8] : score-knightBoard[i/8][i%8];}
-            if (((WB>>i)&1)==1) {score = UserInterface.WhiteToMove? score+bishopBoard[i/8][i%8] : score-bishopBoard[i/8][i%8];}
-            if (((WR>>i)&1)==1) {score = UserInterface.WhiteToMove? score+rookBoard[i/8][i%8] : score-rookBoard[i/8][i%8];}
-            if (((WQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score+queenBoard[i/8][i%8] : score-queenBoard[i/8][i%8];}
-            if (((BP>>i)&1)==1) {score = UserInterface.WhiteToMove? score-pawnBoard[i/8][i%8] : score+pawnBoard[i/8][i%8];}
-            if (((BN>>i)&1)==1) {score = UserInterface.WhiteToMove? score-knightBoard[i/8][i%8] : score+knightBoard[i/8][i%8];}
-            if (((BB>>i)&1)==1) {score = UserInterface.WhiteToMove? score-bishopBoard[i/8][i%8] : score+bishopBoard[i/8][i%8];}
-            if (((BR>>i)&1)==1) {score = UserInterface.WhiteToMove? score-rookBoard[i/8][i%8] : score+rookBoard[i/8][i%8];}
-            if (((BQ>>i)&1)==1) {score = UserInterface.WhiteToMove? score-queenBoard[i/8][i%8] : score+queenBoard[i/8][i%8];}
+            if (((WP>>i)&1)==1) {score = whiteToMove? score+pawnBoard[i/8][i%8] : score-pawnBoard[i/8][i%8];}
+            if (((WN>>i)&1)==1) {score = whiteToMove? score+knightBoard[i/8][i%8] : score-knightBoard[i/8][i%8];}
+            if (((WB>>i)&1)==1) {score = whiteToMove? score+bishopBoard[i/8][i%8] : score-bishopBoard[i/8][i%8];}
+            if (((WR>>i)&1)==1) {score = whiteToMove? score+rookBoard[i/8][i%8] : score-rookBoard[i/8][i%8];}
+            if (((WQ>>i)&1)==1) {score = whiteToMove? score+queenBoard[i/8][i%8] : score-queenBoard[i/8][i%8];}
+            if (((BP>>i)&1)==1) {score = whiteToMove? score-pawnBoard[i/8][i%8] : score+pawnBoard[i/8][i%8];}
+            if (((BN>>i)&1)==1) {score = whiteToMove? score-knightBoard[i/8][i%8] : score+knightBoard[i/8][i%8];}
+            if (((BB>>i)&1)==1) {score = whiteToMove? score-bishopBoard[i/8][i%8] : score+bishopBoard[i/8][i%8];}
+            if (((BR>>i)&1)==1) {score = whiteToMove? score-rookBoard[i/8][i%8] : score+rookBoard[i/8][i%8];}
+            if (((BQ>>i)&1)==1) {score = whiteToMove? score-queenBoard[i/8][i%8] : score+queenBoard[i/8][i%8];}
         }
         return score;
     }
