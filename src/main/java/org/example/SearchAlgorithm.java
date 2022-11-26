@@ -9,7 +9,7 @@ public class SearchAlgorithm {
         int alpha = -1000000000;
         int beta = 1000000000;
 
-        Node root = new Node("", 0, null);
+        Node root = new Node("", 0);
 
         int depth=1;
 
@@ -97,7 +97,7 @@ public class SearchAlgorithm {
                 }
 
 
-                newNode = new Node(move,BoardEvaluation.boardEvaluation(checkedScore,whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2),root);
+                newNode = new Node(move,BoardEvaluation.boardEvaluation(checkedScore,whiteToMove,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2));
                 root.addChild(newNode);
                 treeConstruction(startTime,!whiteToMove,depth-1,newNode,WP2,WN2,WB2,WR2,WQ2,WK2,BP2,BN2,BB2,BR2,BQ2,BK2,EP2,CWK2,CWQ2,CBK2,CBQ2);
             }
