@@ -85,80 +85,12 @@ public class UCI {
     }
     public static void inputGo(){
 
-        int alpha = -1000000000;
-        int beta = 1000000000;
-
-        /*String move;
-        if (UserInterface.WhiteToMove) {
-            move=Moves.possibleMovesW(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
-        } else {
-            move=Moves.possibleMovesB(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK,UserInterface.EP,UserInterface.CWK,UserInterface.CWQ,UserInterface.CBK,UserInterface.CBQ);
-        }
-
-
-        //int index=(int)(Math.floor(Math.random()*(move.length()/4))*4);
-        //System.out.println("index : " + index);
-        System.out.println("move : " + move);
-        System.out.println("move length : " + move.length());
-
-        */
-        /*Node root1 = new Node("",0,null);
-
-        Node node11 = new Node("move1",0,null);
-        Node node12 = new Node("move2",0,null);
-        Node node13 = new Node("move3",0,null);
-
-        root1.addChild(node11);
-        root1.addChild(node12);
-        root1.addChild(node13);
-
-        node11.addChild(new Node("",12,node11));
-        node11.addChild(new Node("",10,node11));
-        node11.addChild(new Node("",3,node11));
-
-        node12.addChild(new Node("",5,node12));
-        node12.addChild(new Node("",8,node12));
-        node12.addChild(new Node("",15,node12));
-
-        node13.addChild(new Node("",11,node13));
-        node13.addChild(new Node("",2,node13));
-        node13.addChild(new Node("",12,node13));
-
-
-
-        //SearchAlgorithm.treeConstruction(2,root1,UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.EP,UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
-        System.out.println("Value of minmax teeeest : " + SearchAlgorithm.MinMax(root1,2,true));
-        //System.out.println(root1.getSonChoosen().getValue()+" is the value");
-        System.out.println("Value of alpha beta teeeest : " + SearchAlgorithm.AlphaBeta(root1,alpha,beta,2,true));
-
-
-        */
         long startTime = System.currentTimeMillis();
-        //depth = 2;
-        String bestMove = SearchAlgorithm.Search(startTime);;
-        //while(System.currentTimeMillis() - startTime < 990) {
-
-           // Node root = new Node("", 0, null);
-            //SearchAlgorithm.treeConstruction(UserInterface.WhiteToMove, depth + 1, root, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
-
-            //System.out.println(root.getChildren().get(1).getValue()+" is the first value");
-            //System.out.println("-----------------");
-            //System.out.println("Value of minmax : " + SearchAlgorithm.MinMax(root,depth,true));
-            //SearchAlgorithm.AlphaBeta(root, alpha, beta, depth, true);
-            //System.out.println("-----------------");
-
-            //bestMove = root.getSonChoosen().getValue();
-            //depth++;
-
-            //System.out.println(root.getSonChoosen().getValue()+" is the value");
-            //BoardEvaluation.boardEvaluation(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-            //String bestMove = SearchAlgorithm.MinMaxAlgorithm(0, UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK, UserInterface.WhiteToMove);
-            //root.displayTree();
-        //}
-        //System.out.println(depth);
-        System.out.println("bestmove "+moveToAlgebra(bestMove));
+        String bestMove = SearchAlgorithm.Search(startTime);
+        System.out.println("bestmove "+ moveToAlgebra(bestMove));
 
     }
+
     public static String moveToAlgebra(String move) {
         String append="";
         int start=0,end=0;

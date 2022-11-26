@@ -67,10 +67,13 @@ public class BoardEvaluation {
             {-50,-30,-30,-30,-30,-30,-30,-50}};
 
 
-    public static int boardEvaluation(boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
+    public static int boardEvaluation(int checkScore, boolean whiteToMove,long WP,long WN,long WB,long WR,long WQ,long WK,long BP,long BN,long BB,long BR,long BQ,long BK){
         int score = 0;
         score += evaluatePieces(whiteToMove, WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
         score += evaluatePosition(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK);
+        score += checkScore;
+
+
         return score;
     }
 
@@ -115,6 +118,7 @@ public class BoardEvaluation {
         }
         return score;
     }
+
 
 
 }
