@@ -2,8 +2,7 @@ package org.example;
 
 import java.util.*;
 public class UCI {
-    static String ENGINENAME="Chess AI";
-    static int depth = 3;
+    static String ENGINENAME="Yolou ChessAI";
     public static void uciCommunication() {
         Scanner input = new Scanner(System.in);
         while (true)
@@ -45,7 +44,7 @@ public class UCI {
     }
     public static void inputUCI() {
         System.out.println("id name "+ENGINENAME);
-        System.out.println("id author Yoann");
+        System.out.println("id author Yoann and Louise");
         //options go here
         System.out.println("uciok");
     }
@@ -84,11 +83,9 @@ public class UCI {
         }
     }
     public static void inputGo(){
-
         long startTime = System.currentTimeMillis();
         String bestMove = SearchAlgorithm.Search(startTime);
         System.out.println("bestmove "+ moveToAlgebra(bestMove));
-
     }
 
     public static String moveToAlgebra(String move) {

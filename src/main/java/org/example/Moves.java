@@ -1,6 +1,4 @@
 package org.example;
-import java.util.Arrays;
-import java.util.List;
 
 public class Moves {
     static long FILE_A=72340172838076673L;
@@ -620,42 +618,4 @@ public class Moves {
         unsafe |= possibility;
         return unsafe;
     }
-    public static void drawBitboard(long bitBoard) {
-        String chessBoard[][]=new String[8][8];
-        for (int i=0;i<64;i++) {
-            chessBoard[i/8][i%8]="";
-        }
-        for (int i=0;i<64;i++) {
-            if (((bitBoard>>>i)&1)==1) {chessBoard[i/8][i%8]="P";}
-            if ("".equals(chessBoard[i/8][i%8])) {chessBoard[i/8][i%8]=" ";}
-        }
-        for (int i=0;i<8;i++) {
-            System.out.println(Arrays.toString(chessBoard[i]));
-        }
-    }
-    public static void timeExperiment(long WP) {
-        int loopLength=1000;
-        long startTime=System.currentTimeMillis();
-        tEMethodA(loopLength, WP);
-        long endTime=System.currentTimeMillis();
-        System.out.println("That took "+(endTime-startTime)+" milliseconds for the first method");
-        startTime=System.currentTimeMillis();
-        tEMethodB(loopLength, WP);
-        endTime=System.currentTimeMillis();
-        System.out.println("That took "+(endTime-startTime)+" milliseconds for the second method");
-    }
-    public static void tEMethodA(int loopLength, long WP) {
-        for (int loop=0;loop<loopLength;loop++)
-        {
-
-        }
-    }
-    public static void tEMethodB(int loopLength, long WP) {
-        for (int loop=0;loop<loopLength;loop++)
-        {
-
-        }
-    }
-
-
 }
