@@ -4,6 +4,8 @@ import java.util.List;
 
 public class SearchAlgorithm {
 
+    public static int maxTime = 3990;
+
     public static  String Search(long startTime) {
 
         int alpha = -1000000000;
@@ -13,7 +15,7 @@ public class SearchAlgorithm {
 
         int depth=1;
 
-        while(System.currentTimeMillis() - startTime < 990) {
+        while(System.currentTimeMillis() - startTime < maxTime) {
             try {
                 SearchAlgorithm.treeConstruction(startTime,UserInterface.WhiteToMove,depth +1, root, UserInterface.WP, UserInterface.WN, UserInterface.WB, UserInterface.WR, UserInterface.WQ, UserInterface.WK, UserInterface.BP, UserInterface.BN, UserInterface.BB, UserInterface.BR, UserInterface.BQ, UserInterface.BK, UserInterface.EP, UserInterface.CWK, UserInterface.CWQ, UserInterface.CBK, UserInterface.CBQ);
             } catch (Exception e) {}
@@ -46,7 +48,7 @@ public class SearchAlgorithm {
                 :Moves.possibleMovesB(WP, WN, WB, WR, WQ, WK, BP, BN, BB, BR, BQ, BK, EP, CWK, CWQ, CBK, CBQ);
 
         //get evaluation for each son
-        if(System.currentTimeMillis() - startTime >= 990) {
+        if(System.currentTimeMillis() - startTime >= maxTime) {
             throw new Exception();
         }
         int firstLegalMove = getFirstLegalMove(moves,WP,WN,WB,WR,WQ,WK,BP,BN,BB,BR,BQ,BK,EP,CWK,CWQ,CBK,CBQ,whiteToMove);
@@ -152,7 +154,7 @@ public class SearchAlgorithm {
         if(isMaximizing){
             value = -10000000;
             for (Node son:nodeList) {
-                if(System.currentTimeMillis() - startTime >= 990) {
+                if(System.currentTimeMillis() - startTime >= maxTime) {
                     throw new Exception();
 
                 }
@@ -174,7 +176,7 @@ public class SearchAlgorithm {
         else{
             value = 10000000;
             for (Node son:nodeList) {
-                if(System.currentTimeMillis() - startTime >= 990) {
+                if(System.currentTimeMillis() - startTime >= maxTime) {
                     throw new Exception();
                 }
                 int tempValue = AlphaBeta(son,alpha, beta , depth-1,true, startTime);
