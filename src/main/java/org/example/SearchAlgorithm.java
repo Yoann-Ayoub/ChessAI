@@ -4,7 +4,7 @@ import java.util.List;
 
 public class SearchAlgorithm {
 
-    public static int maxTime = 3990;
+    public static int maxTime = 990;
 
     public static  String Search(long startTime) {
 
