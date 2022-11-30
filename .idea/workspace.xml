@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="nettoyage">
+    <list default="true" id="80cc127a-e79a-4ead-a118-0c8297d8e67d" name="Changes" comment="tentative d'amélioration de l'évaluation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessAI_jar/ChessAI.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BoardEvaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SearchAlgorithm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669826652386</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tentative d'amélioration de l'évaluation">
+      <created>1669837433014</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1669837433014</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -256,7 +262,8 @@
     <MESSAGE value="modification treeConstruction" />
     <MESSAGE value="reorganisation" />
     <MESSAGE value="nettoyage" />
-    <option name="LAST_COMMIT_MESSAGE" value="nettoyage" />
+    <MESSAGE value="tentative d'amélioration de l'évaluation" />
+    <option name="LAST_COMMIT_MESSAGE" value="tentative d'amélioration de l'évaluation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChessAI$Main.ic" NAME="Main Coverage Results" MODIFIED="1667489786558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
