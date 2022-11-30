@@ -36,12 +36,6 @@ public class UCI {
             {
                 inputQuit();
             }
-            /*
-            else if ("print".equals(inputString))
-            {
-                inputPrint();
-            }
-             */
         }
     }
     public static void inputUCI() {
@@ -182,10 +176,5 @@ public class UCI {
     public static void inputQuit() {
         System.exit(0);
     }
-    /*
-    public static void inputPrint() {
-        BoardGeneration.drawArray(UserInterface.WP,UserInterface.WN,UserInterface.WB,UserInterface.WR,UserInterface.WQ,UserInterface.WK,UserInterface.BP,UserInterface.BN,UserInterface.BB,UserInterface.BR,UserInterface.BQ,UserInterface.BK);
-    }
-     */
 
 }
