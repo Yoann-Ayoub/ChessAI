@@ -114,7 +114,7 @@ public class BoardEvaluation {
             {-20,-10,-10, -5, -5,-10,-10,-20}};
 
 
-/*
+/* // meilleure performance sans tableau pour le roi tant que l'on n'a pas un moyen d'évaluer milieu et fin de partie
     static int kingBoard[][]={ // idea for king mid board
             {-30,-40,-40,-50,-50,-40,-40,-30},
             {-30,-40,-40,-50,-50,-40,-40,-30},
